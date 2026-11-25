@@ -1,0 +1,3 @@
+2026-11-26 00:07:37.759 INFO  [Main         ] Uygulama basladi
+2026-11-26 00:07:38.282 INFO  [PERFORMANCE  ] Performans CSV yazildi: /Users/ayseyilmaz/Downloads/iris-pca-aop/logs/performance-report.csv
+2026-11-26 00:07:38.283 INFO  [Main         ] Uygulama bitti (cikis kodu 0)

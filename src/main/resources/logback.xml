@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <property name="PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%-13logger{0}] %msg%n"/>
+
+  <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>${PATTERN}</pattern>
+      <charset>UTF-8</charset>
+    </encoder>
+  </appender>
+
+  <!-- Genel uygulama logu: gunluk + boyuta gore donen dosya -->
+  <appender name="APP_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>logs/pca-app.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+      <fileNamePattern>logs/pca-app.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+      <maxFileSize>5MB</maxFileSize>
+      <maxHistory>7</maxHistory>
+      <totalSizeCap>50MB</totalSizeCap>
+    </rollingPolicy>
+    <encoder>
+      <pattern>${PATTERN}</pattern>
+      <charset>UTF-8</charset>
+    </encoder>
+  </appender>
+
+  <!-- Sadece performans olculeri -->
+  <appender name="PERF_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>logs/performance.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+      <fileNamePattern>logs/performance.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+      <maxFileSize>5MB</maxFileSize>
+      <maxHistory>7</maxHistory>
+    </rollingPolicy>
+    <encoder>
+      <pattern>${PATTERN}</pattern>
+      <charset>UTF-8</charset>
+    </encoder>
+  </appender>
+
+  <!-- Sadece hatalar -->
+  <appender name="ERROR_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>logs/errors.log</file>
+    <filter class="ch.qos.logback.classic.filter.ThresholdFilter"><level>WARN</level></filter>
+    <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+      <fileNamePattern>logs/errors.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+      <maxFileSize>5MB</maxFileSize>
+      <maxHistory>30</maxHistory>
+    </rollingPolicy>
+    <encoder>
+      <pattern>${PATTERN}</pattern>
+      <charset>UTF-8</charset>
+    </encoder>
+  </appender>
+
+  <logger name="PERFORMANCE" level="INFO" additivity="false">
+    <appender-ref ref="PERF_FILE"/>
+    <appender-ref ref="APP_FILE"/>
+  </logger>
+
+  <root level="INFO">
+    <appender-ref ref="CONSOLE"/>
+    <appender-ref ref="APP_FILE"/>
+    <appender-ref ref="ERROR_FILE"/>
+  </root>
+</configuration>
