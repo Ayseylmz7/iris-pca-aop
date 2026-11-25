@@ -6,7 +6,7 @@ Iris veri seti üzerinde **Temel Bileşenler Analizi (PCA)** uygulayan ve bu sü
 
 PCA'nın kendisi iş sınıflarında yer alır. Süre ölçümü, loglama, veri doğrulama ve hata yönetimi ise iş kodundan ayrı, **aspect** adı verilen sınıflarda toplanmıştır.
 
-> Ders ödevi olarak hazırlanmıştır. &nbsp;|&nbsp; Hazırlayan: **[Ad Soyad] - [Öğrenci No]**
+> Ders ödevi olarak hazırlanmıştır. &nbsp;|&nbsp; Hazırlayan: -Ayşe Yılmaz-
 
 ---
 
